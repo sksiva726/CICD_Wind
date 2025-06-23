@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Wind Turbine MLOps Project
 
 This project implements a local, modular, end-to-end machine learning pipeline for wind turbine sensor data using MongoDB/MySQL, MLflow, FastAPI, and Streamlit.
@@ -47,3 +48,7 @@ This project implements a local, modular, end-to-end machine learning pipeline f
 
 - All data and logs are stored locally in MongoDB and MySQL.
 - No cloud, GitHub, or CI/CD is used at this stage.
+=======
+# CICD_Wind
+CICD_MLflow_Wind
+>>>>>>> 45300cb51de4d4c981d589761637ded68176350f
