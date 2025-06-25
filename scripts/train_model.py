@@ -66,7 +66,7 @@ def train_and_log_from_mongodb():
     model = RandomForestRegressor(random_state=42)
     # X_train, y_train = X_train, y_train
     # only use 500 samples for training to speed up the process
-    X_train, y_train = X_train[:1000], y_train[:1000]  # Use only 500 samples for faster training
+    X_train, y_train = X_train[:10000], y_train[:10000]  # Use only 500 samples for faster training
     # Save the scaler for future inferen
     print('traing data first 5 rows:\n', X_train[:5])
     print('training data column names:\n', df.columns)
