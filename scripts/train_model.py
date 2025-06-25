@@ -89,7 +89,7 @@ def train_and_log_from_mongodb():
         mlflow.log_metric("rmse", rmse)
         mlflow.log_metric("mae", mae)
         mlflow.log_metric("r2", r2)
-        mlflow.sklearn.log_model(model, "model")
+        mlflow.sklearn.log_model(model, artifact_path="model")
         print(f"Run ID: {run.info.run_id} | RMSE: {rmse:.2f} | MAE: {mae:.2f} | R2: {r2:.2f}")
 
 if __name__ == "__main__":
