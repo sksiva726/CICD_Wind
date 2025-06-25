@@ -1,38 +1,3 @@
-# """
-# Train regression model, evaluate, and log to MLflow.
-# """
-# import pandas as pd
-# from sklearn.ensemble import RandomForestRegressor
-# from sklearn.model_selection import train_test_split
-# from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-# import mlflow
-# import mlflow.sklearn
-# from preprocess import preprocess
-
-# def train_and_log(csv_path):
-#     df = pd.read_csv(csv_path)
-#     X, y, scaler = preprocess(df)
-#     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-#     model = RandomForestRegressor(random_state=42)
-#     model.fit(X_train, y_train)
-#     y_pred = model.predict(X_test)
-#     rmse = mean_squared_error(y_test, y_pred, squared=False)
-#     mae = mean_absolute_error(y_test, y_pred)
-#     r2 = r2_score(y_test, y_pred)
-
-#     mlflow.set_tracking_uri("http://127.0.0.1:5000")
-#     with mlflow.start_run() as run:
-#         mlflow.log_param("model_type", "RandomForest")
-#         mlflow.log_metric("rmse", rmse)
-#         mlflow.log_metric("mae", mae)
-#         mlflow.log_metric("r2", r2)
-#         mlflow.sklearn.log_model(model, "model")
-#         print(f"Run ID: {run.info.run_id} | RMSE: {rmse:.2f} | MAE: {mae:.2f} | R2: {r2:.2f}")
-
-# if __name__ == "__main__":
-#     train_and_log("../data/wind_turbine_data.csv")
-
-
 """
 Train regression model, evaluate, and log to MLflow.
 Loads cleaned data from MongoDB (wind_monitoring.cleaned_data).
@@ -115,7 +80,10 @@ def train_and_log_from_mongodb():
     mae = mean_absolute_error(y_test, y_pred)
     r2 = r2_score(y_test, y_pred)
 
-    mlflow.set_tracking_uri("http://127.0.0.1:5000")
+    # mlflow.set_tracking_uri("http://127.0.0.1:5000") # local MLflow server
+    # For DagsHub, use the following tracking URI 
+    
+    mlflow.set_tracking_uri("https://dagshub.com/sksivakumar726/CICD_Wind.mlflow")
     with mlflow.start_run() as run:
         mlflow.log_param("model_type", "RandomForest")
         mlflow.log_metric("rmse", rmse)
