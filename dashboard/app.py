@@ -6,8 +6,9 @@ from pymongo import MongoClient
 from datetime import datetime
 
 # Load model and scaler once
-model = joblib.load("models/trained_model.pkl")
 scaler = joblib.load("models/scaler.pkl")
+
+model = joblib.load("models/model.pkl")
 
 # MongoDB setup
 client = MongoClient("mongodb://localhost:27017/")
